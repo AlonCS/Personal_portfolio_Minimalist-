@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aloncs.github.io/Personal_portfolio_Minimalist-/sitemap.xml

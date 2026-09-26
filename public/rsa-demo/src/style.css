@@ -1,0 +1,1018 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, Outfit, sans-serif;
+  background-color: #ededed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 95%;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+footer {
+  text-align: center;
+  font-family: Outfit, sans-serif;
+  position: relative;
+  width: 100%;
+  font-style: normal;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bde3d0;
+  gap: 20px;
+}
+
+footer img {
+  width: 30px;
+  height: 30px;
+}
+
+td {
+  font-size: 0.9rem;
+}
+
+.outfit-header-font {
+  font-family: Outfit, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+header {
+  top: 0;
+  position: sticky;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #bde3d0;
+  width: 100%;
+}
+
+.logo {
+  padding: 20px;
+  align-self: center;
+}
+
+#desktop-logo {
+  display: block;
+  width: 150px;
+}
+
+#mobile-logo {
+  display: none;
+}
+
+.header-spacer {
+  width: 150px;
+  padding: 20px;
+  align-self: center;
+}
+
+header h1 {
+  font-family: Outfit, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
+  color: #2a2e33;
+}
+
+/* Week Card Styles */
+section.week-card {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  padding: 30px;
+  max-width: 800px;
+  margin: 10px;
+  overflow: hidden;
+  min-width: 400px;
+  width: 50%;
+}
+
+/* Inner Week Card */
+.inner-week-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styling */
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-header h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.fa-chevron-up {
+  font-size: 20px;
+}
+
+.week-header.fa-chevron-up {
+  padding: 5px 10px;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Departments Section */
+.departments {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.departments h3 {
+  font-size: 1.25rem;
+  margin-right: 20px; /* Adds space between the header and the list */
+  white-space: nowrap; /* Ensures the header text stays on one line */
+}
+
+.departments ul {
+  list-style-type: none;
+  display: flex;
+  gap: 10px; /* Adds space between the list items */
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.departments li {
+  font-weight: bold;
+  white-space: nowrap; /* Prevents wrapping of list items */
+  display: inline-block; /* Ensure the pill does not take full width */
+  color: black;
+  margin-bottom: 0;
+}
+
+/* Ice Breakers Section */
+.ice-breakers h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  padding: 10px;
+}
+
+table tbody td {
+  padding: 5px;
+  border: 1px solid #ececec;
+  vertical-align: top;
+  text-align: center; /* Center content within the table cell */
+}
+
+table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+tr:nth-child(odd) {
+  background: #e8f2ea;
+}
+
+table tbody tr:hover {
+  background-color: #d0eaff; /* Light blue background color on hover */
+}
+
+/* Reusable Pill Styles */
+.pill {
+  background-color: #bde3d0;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: inline-block; /* Ensure the pill does not take full width */
+  max-width: fit-content;
+}
+
+/* Intern Pill Styles */
+.intern-pill-name-location {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content within the flex container */
+}
+
+.intern-pill-name-location p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Toggle Icons + Collapsing Content */
+#week-card-content,
+#intern-card-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+#week-card-content.collapsed,
+#intern-card-content.collapsed {
+  max-height: 0;
+}
+
+i#toggle-icon-week,
+i#toggle-icon-interns {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+i#toggle-icon-week.rotate,
+i#toggle-icon-week.interns {
+  transform: rotate(180deg);
+}
+
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s;
+}
+
+#ice-breaker-questions {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Add space between list items */
+}
+
+#ice-breaker-questions li {
+  word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+  overflow-wrap: break-word;
+  padding: 5px 0;
+  list-style-type: decimal;
+}
+
+/* Filter and Generate Buttons */
+.buttons-filters {
+  background-color: #ededed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+  white-space: nowrap;
+  z-index: 9999;
+  overflow-x: auto;
+}
+
+#schedule-button {
+  background-color: #bebde3;
+}
+
+#schedule-button:hover {
+  background-color: #aca9ef;
+}
+
+#clear-filters-button {
+  background-color: #e3bdbd;
+}
+
+#clear-filters-button:hover {
+  background-color: #e5aaaa;
+}
+
+.dropdown {
+  display: flex;
+  width: 170px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #bde3d0;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+}
+
+.filters-container {
+  display: flex;
+  gap: 20px;
+  position: static;
+}
+
+.filter-container {
+  position: relative;
+}
+
+.filter-button {
+  display: flex;
+  width: 170px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #bde3d0;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #8be1b6;
+}
+
+/* Pairing Table Option Buttons */
+#pairings-operations {
+  display: flex;
+  column-gap: 25px;
+}
+
+.export-button-div {
+  display: block;
+  width: 100%;
+}
+
+#export-button {
+  height: 40px;
+  display: block;
+  width: 100% !important;
+  margin-top: 10px;
+  text-align: center;
+  background-color: rgb(245 204 157);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+#export-button:hover {
+  background-color: rgb(255 186 49);
+}
+
+#add-pair-button {
+  justify-content: center;
+  width: 100% !important;
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+#add-pair-button:hover,
+.add-pair-button-all:hover {
+  background-color: #65daa0;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+}
+
+.fixed-modal-content {
+  position: fixed;
+  background-color: white;
+  top: 170px;
+  width: 250px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+.modal-content {
+  padding: 15px;
+  padding-top: 30px; /* Make room for the close button */
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.option-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option-item {
+  margin-bottom: 10px;
+}
+
+.option-item label {
+  display: flex;
+  align-items: center;
+}
+
+.option-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.selected-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.selected-option {
+  background-color: #bde3d0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.remove-option {
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filter-config {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container-intern-list-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+/* list-card-wrapper-alonzo */
+.departments-text {
+  font-family: roboto, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 14px;
+}
+
+.intern-pill-name-location .pill {
+  margin-bottom: 5px;
+}
+
+.pill-web-development {
+  background-color: #e8cbe9;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-design {
+  background-color: #cec2eb;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-video-production {
+  background-color: #e9cac9;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-it {
+  background-color: #c8e4e9;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-digital-marketing {
+  background-color: #e0ee81;
+  color: black;
+  font-weight: bold;
+}
+
+.intern-list-text {
+  display: grid;
+  align-items: center;
+}
+
+th,
+td {
+  padding: 10px; /* Default padding */
+}
+
+table thead th {
+  background-color: #bde3d0;
+  color: black;
+  text-align: center;
+}
+
+/* Custom padding for specific columns */
+table thead th:nth-child(1),
+table thead th:nth-child(2) {
+  padding-left: 20px;
+  padding-right: 20px;
+  vertical-align: middle;
+}
+
+/* select button colors */
+.pill-select,
+.pill-select-all {
+  background-color: #bde3d0;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-selected,
+.pill-deselect-all {
+  background-color: #e3c4bd;
+  color: black;
+  font-weight: bold;
+}
+
+.pill-selected,
+.pill-select,
+.pill-select-all,
+.pill-deselect-all {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
+}
+
+.pill-selected:hover,
+.pill-deselect-all:hover {
+  background-color: #e08b78;
+}
+
+.pill-select:hover,
+.pill-select-all:hover {
+  background-color: #65daa0;
+}
+
+.interns-config-settings {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.selection-config {
+  display: flex;
+  gap: 20px;
+}
+
+.search-bar {
+  padding: 10px 20px; /* Match padding with pills */
+  border-radius: 20px; /* Match border radius with pills */
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: auto; /* Adjust width to fit content */
+  transition: border-color 0.3s;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%); /* Match box shadow with pills */
+  height: 20px;
+}
+
+.search-bar:focus {
+  border-color: #bde3d0;
+  outline: none;
+}
+
+#generate-button-lottie {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #8dd9b3; /* Match the main color */
+  color: #fff;
+  text-align: center;
+  line-height: 49px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none; /* Hidden by default */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+  z-index: 9999; /* Ensure it is above other elements */
+}
+
+.scroll-to-top:hover {
+  background-color: rgb(
+    99 194 145
+  ); /* Slightly darker shade for hover effect */
+
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+.scroll-to-top i {
+  font-size: 24px; /* Slightly larger icon */
+}
+
+#week-card-content {
+  display: none;
+}
+
+/* EDITING modal */
+.edit-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0 0 0); /* Fallback color */
+  background-color: rgb(0 0 0 / 40%); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.edit-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px 40px;
+  border-radius: 25px;
+  width: fit-content; /* Could be more or less, depending on screen size */
+  font-weight: bold;
+  max-height: 500px; /* Ensure the modal itself has a max height */
+  overflow-y: auto; /* Enable vertical scrolling for the modal */
+}
+
+/* Container for the table to enable scrolling */
+#intern-options {
+  display: block;
+  max-height: 300px; /* Set a maximum height for the container */
+  overflow: hidden auto; /* Enable vertical scrolling */ /* Prevent horizontal scrolling */
+  width: 100%;
+}
+
+#intern-options table {
+  width: 100%; /* Set the table width to 100% */
+  border-collapse: collapse; /* Collapse borders for a cleaner look */
+}
+
+/* Optional: Add some styling to the table for better appearance */
+#intern-options table th,
+#intern-options table td {
+  border: 1px solid #ddd; /* Add borders to table cells */
+  padding: 8px; /* Add padding to table cells */
+  width: 100%; /* Ensure they stretch to fill the space */
+  box-sizing: border-box;
+}
+
+#edit-modal-header {
+  font-size: 20px;
+  text-align: center;
+}
+
+/* The Close Button */
+.edit-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.edit-close:hover,
+.edit-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Submit Button */
+#submit-modal {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgb(172 211 253);
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#submit-modal:hover {
+  background-color: rgb(100 173 252);
+}
+
+/* ADD/REMOVE buttons */
+.edit {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#add-intern {
+  margin-right: 5px;
+  border: 2px solid rgb(53 166 53);
+  background-color: rgb(153 205 50 / 27.9%);
+  color: rgb(53 166 53);
+}
+
+#add-intern:hover {
+  background-color: rgb(153 205 50 / 63.6%);
+}
+
+#remove-intern {
+  border: 2px solid rgb(255 68 68);
+  background-color: rgb(255 0 0 / 11.4%);
+  color: rgb(255 68 68);
+}
+
+#remove-intern:hover {
+  background-color: rgb(255 0 0 / 35.6%);
+}
+
+@media screen and (width <= 768px) {
+  #desktop-logo {
+    display: none;
+  }
+
+  #mobile-logo {
+    display: block;
+    width: 50px;
+  }
+
+  .logo {
+    padding: 20px;
+  }
+
+  .header-spacer {
+    width: 50px;
+    padding: 20px;
+    align-self: center;
+  }
+
+  footer img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .departments,
+  .ice-breakers {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .departments ul {
+    gap: 5px;
+  }
+
+  .departments h3,
+  .ice-breakers h3 {
+    width: 100%;
+  }
+
+  .buttons-filters button {
+    padding: 10px;
+  }
+
+  .dropdown {
+    font-size: small;
+  }
+
+  .fixed-modal-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .filter-container,
+  .filter-button,
+  #schedule-button,
+  #clear-filters-button {
+    width: 150px !important;
+    font-size: 16px;
+  }
+
+  .interns-config-settings {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Style for the intern email link */
+.intern-email {
+  text-decoration: none; /* Remove text decoration */
+  color: #000; /* Set the text color */
+  font-weight: bold; /* Make the text bold */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the intern email link */
+.intern-email:hover {
+  color: #007bff; /* Change the text color on hover */
+}
+
+.group-number-container {
+  margin-bottom: 10px;
+}
+
+@media screen and (width <= 950px) {
+  .filter-container {
+    width: 100%;
+    max-width: 170px;
+  }
+
+  .option-item {
+    padding: 10px 0;
+  }
+
+  .buttons-filters {
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+
+  section.week-card {
+    min-width: 1px;
+    width: 90%;
+  }
+}
+
+@media screen and (width <= 500px) {
+  section.week-card {
+    min-width: 1px;
+    width: 80%;
+  }
+
+  .week-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .selection-config {
+    justify-content: center;
+  }
+
+  #pairings-operations {
+    column-gap: 10px;
+  }
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    margin: 0 0 1rem;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+
+    /* border-bottom: 1px solid #eee; */
+    position: relative;
+    padding: 5px 0 0;
+    text-align: center;
+  }
+
+  td::before {
+    /* Top/left values mimic padding */
+    top: 0;
+    left: 6px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  /*
+  Label the data
+  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+  */
+  .interns-table td:nth-of-type(2)::before {
+    content: "Name";
+  }
+
+  .interns-table td:nth-of-type(3)::before {
+    content: "Location";
+  }
+
+  /* EDIT mobile view */
+  .edit-modal-content {
+    align-items: center;
+    margin: 200px auto 10px;
+  }
+}
+
+@media screen and (width <= 350px) {
+  header {
+    font-size: small;
+  }
+
+  #mobile-logo {
+    width: 30px;
+  }
+
+  .logo {
+    padding: 20px;
+  }
+
+  .header-spacer {
+    width: 30px;
+    padding: 20px;
+    align-self: center;
+  }
+
+  .buttons-filters {
+    padding: 10px 0;
+  }
+
+  .filter-container,
+  .filter-button,
+  #schedule-button,
+  #clear-filters-button {
+    width: 130px !important;
+    font-size: 14px;
+  }
+
+  .filter-config {
+    gap: 5px;
+  }
+
+  /* EDIT mobile view */
+  .edit-modal-content {
+    margin: 150px auto 10px;
+  }
+}

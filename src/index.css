@@ -1,15 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  /* --bg at zero alpha. Gradients that fade out must end here rather than at
+     `transparent`, which is rgba(0,0,0,0) and drags the ramp through grey. */
+  --bg-0: rgba(255, 255, 255, 0);
   --border: #e5e4e7;
   --accent: #4a7c59;
-  --content-width: 1140px;
+  --award-gold: #896211;
+  --content-width: min(1560px, 84vw);
 
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --heading: 'Playfair Display', Georgia, serif;
+  /* Section rhythm. Every content section (About → Contact) frames itself with
+     these, so the spacing can't drift apart per-section. Overridden as a group
+     at the mobile breakpoint in App.css. */
+  --section-pad-y: clamp(40px, 4.5vh, 76px);
+  --section-pad-b: clamp(40px, 4.5vh, 76px);
+  --section-pad-x: 48px;
+  --section-title: clamp(64px, 3.5vw, 88px);
+  /* Title block → main content */
+  --section-head-gap: clamp(36px, 4.5vh, 64px);
+  /* Title → its own subtitle/description */
+  --title-sub-gap: clamp(14px, 1.6vh, 24px);
+
+  /* Single-family type, matching the reference site: Exo throughout, mono for
+     the small technical labels. Every rule routes through these two. */
+  --sans: 'Exo', system-ui, -apple-system, sans-serif;
+  --heading: 'Exo', var(--sans);
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* The hero photo is dark in both themes, so its accent stays fixed — the sage
+     --accent is tuned for a white page and goes muddy over the scrim. */
+  --hero-accent: #93cea4;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -20,11 +42,24 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Manual theme toggle sets data-theme on <html>; before React hydrates (or with
+   JS off) the media query below keeps the system preference as the default. */
+:root[data-theme='dark'] {
+  --award-gold: #e4bd63;
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --bg-0: rgba(22, 23, 29, 0);
+  --border: #2e303a;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
+    --award-gold: #e4bd63;
     --text: #9ca3af;
     --text-h: #f3f4f6;
     --bg: #16171d;
+    --bg-0: rgba(22, 23, 29, 0);
     --border: #2e303a;
   }
 }

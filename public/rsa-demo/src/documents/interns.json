@@ -1,0 +1,433 @@
+{
+  "interns": {
+    "Demo Intern 01": {
+      "location": "Modesto",
+      "department": "Design",
+      "email": "intern1@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 02": {
+      "location": "Gilroy",
+      "department": "Design",
+      "email": "intern2@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 03": {
+      "location": "Stockton",
+      "department": "Design",
+      "email": "intern3@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 04": {
+      "location": "Gilroy",
+      "department": "Design",
+      "email": "intern4@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 05": {
+      "location": "Modesto",
+      "department": "Design",
+      "email": "intern5@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 06": {
+      "location": "Modesto",
+      "department": "Design",
+      "email": "intern6@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 07": {
+      "location": "Stockton",
+      "department": "Design",
+      "email": "intern7@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 08": {
+      "location": "Stockton",
+      "department": "Design",
+      "email": "intern8@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 09": {
+      "location": "Gilroy",
+      "department": "Design",
+      "email": "intern9@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 10": {
+      "location": "Watsonville",
+      "department": "Digital Marketing",
+      "email": "intern10@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 11": {
+      "location": "Salinas",
+      "department": "Digital Marketing",
+      "email": "intern11@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 12": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "intern12@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 13": {
+      "location": "Salinas",
+      "department": "Digital Marketing",
+      "email": "intern13@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 14": {
+      "location": "Salinas",
+      "department": "Digital Marketing",
+      "email": "intern14@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 15": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "intern15@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 16": {
+      "location": "Watsonville",
+      "department": "Digital Marketing",
+      "email": "intern16@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 17": {
+      "location": "Watsonville",
+      "department": "Digital Marketing",
+      "email": "intern17@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 18": {
+      "location": "Stockton",
+      "department": "Digital Marketing",
+      "email": "intern18@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 19": {
+      "location": "Modesto",
+      "department": "IT",
+      "email": "intern19@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 20": {
+      "location": "Modesto",
+      "department": "IT",
+      "email": "intern20@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 21": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "intern21@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 22": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "intern22@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 23": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "intern23@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 24": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "intern24@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 25": {
+      "location": "Watsonville",
+      "department": "Video Production",
+      "email": "intern25@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 26": {
+      "location": "Salinas",
+      "department": "Video Production",
+      "email": "intern26@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 27": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "intern27@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 28": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "intern28@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 29": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "intern29@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 30": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "intern30@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 31": {
+      "location": "Stockton",
+      "department": "Web Development",
+      "email": "intern31@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 32": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "intern32@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 33": {
+      "location": "Salinas",
+      "department": "Web Development",
+      "email": "intern33@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 34": {
+      "location": "Watsonville",
+      "department": "Web Development",
+      "email": "intern34@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 35": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "intern35@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 36": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "intern36@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 37": {
+      "location": "Stockton",
+      "department": "Web Development",
+      "email": "intern37@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 38": {
+      "location": "Gilroy",
+      "department": "Web Development",
+      "email": "intern38@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    },
+    "Demo Intern 39": {
+      "location": "Modesto",
+      "department": "Web Development",
+      "email": "intern39@example.invalid",
+      "schedule": {
+        "Tuesday": "",
+        "Wednesday": "",
+        "Thursday": "",
+        "Friday": ""
+      }
+    }
+  }
+}
