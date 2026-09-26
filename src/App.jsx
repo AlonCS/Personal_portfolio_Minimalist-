@@ -1104,7 +1104,7 @@ function App() {
   const [activeCardTags, setActiveCardTags] = useState(null)
   const [qualPaused, setQualPaused] = useState(false)
   const [projPaused, setProjPaused] = useState(false)
-  const [projectSelection, setProjectSelection] = useState({ filter: 'All', id: 1 })
+  const [projectSelection, setProjectSelection] = useState({ filter: 'All', id: 3 })
   // Which filter row a click has parked, if any: 'proj' | 'qual' | null. Clicking a
   // tab holds its countdown regardless of the pointer; clicking anywhere off the
   // tabs releases it and the countdown starts over.
@@ -1409,7 +1409,9 @@ function App() {
   const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter)
   // With a skill selected, the projects carrying it float to the front of the grid.
   // sort() is stable, so everything keeps its relative order within each group.
-  const shownProjects = filtered
+  const shownProjects = [...filtered].sort(
+    (a, b) => Number(b.category === 'Robotics') - Number(a.category === 'Robotics')
+  )
   const featured = shownProjects.find((project) =>
     projectSelection.filter === filter && project.id === projectSelection.id
   ) || shownProjects[0]
