@@ -2022,9 +2022,6 @@ function App() {
                       </a>
                     )}
                   </div>
-                  {d.summary.map((para, i) => (
-                    <p key={i} className="detail-body">{para}</p>
-                  ))}
                   {d.award && (
                     <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
                       <span className="detail-award-label">Award winner</span>
@@ -2032,6 +2029,10 @@ function App() {
                       <span>{d.award.event}</span>
                     </a>
                   )}
+                  {d.summary.map((para, i) => (
+                    <p key={i} className="detail-body">{para}</p>
+                  ))}
+
                 </div>
 
                 <div className="detail-block">
