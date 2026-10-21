@@ -2165,7 +2165,7 @@ function App() {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
-            <a href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view" target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn-ghost">
+            <a href={`${import.meta.env.BASE_URL}Alonzo-Cabrera-Resume.pdf`} target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn-ghost">
               Résumé ↗
             </a>
           </div>
@@ -2528,7 +2528,7 @@ function App() {
               <nav className="contact-links" aria-label="Contact and profiles">
                 <a href="https://github.com/AlonCS" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                 <a href="https://www.linkedin.com/in/alonzo-cabrera/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-                <a href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
+                <a href={`${import.meta.env.BASE_URL}Alonzo-Cabrera-Resume.pdf`} target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
               </nav>
             </div>
           </div>
