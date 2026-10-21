@@ -65,7 +65,7 @@ const RAIL = [
   { id: 'home', label: 'Top' },
   { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
-  { id: 'qualifications', label: 'Background' },
+  { id: 'qualifications', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -211,7 +211,7 @@ const PROJECTS = [
     image: redScoutAnimation,
     tags: ['Python', 'Vision Language Models', 'NVIDIA Jetson', 'Docker', 'Linux'],
     detail: {
-      github: 'https://github.com/AlonCS/redScout_farm_robotics_challenge',
+      repoInquiry: 'alonzocabrera48@gmail.com',
       strategy: ['Real-time', 'Field-tested', 'Automated'],
       purpose: 'Automate crop monitoring',
       techStack: ['Python', 'PyTorch', 'OpenCV', 'ROS 2', 'NVIDIA Jetson', 'Docker'],
@@ -252,7 +252,7 @@ const PROJECTS = [
     cardVideo: microcontrollerFieldVideo,
     tags: ['Arduino', 'PID Control', 'Python', 'Raspberry Pi', 'Linux'],
     detail: {
-      github: '#', // TODO: real repo URL
+      repoInquiry: 'alonzocabrera48@gmail.com',
       strategy: ['Low-latency', 'Responsive', 'Intuitive'],
       purpose: 'Enable reliable manual robot control',
       techStack: ['Arduino', 'Python', 'Raspberry Pi', 'PID Control'],
@@ -284,7 +284,7 @@ const PROJECTS = [
   },
 ]
 
-const FILTERS = ['All', 'Web Development', 'Robotics']
+const FILTERS = ['Highlights', 'Web Development', 'Robotics']
 
 const SKILLS = [
   { category: 'Languages & Frameworks', items: ['Python', 'R', 'HTML', 'CSS', 'JavaScript', 'React', 'PHP'] },
@@ -305,7 +305,7 @@ const QUALIFICATIONS = {
       logo: 'joby',
       location: 'Marina, CA',
       tags: ['Python', 'ROS 2', 'MoveIt 2', 'Fanuc CRX25i', 'CATIA', 'SolidWorks', 'HMI Systems', 'Technical Documentation', 'VS Code'],
-      desc: 'Built and maintained automation tooling for the aircraft manufacturing line.',
+      desc: 'Developed FANUC robot telemetry, automated thermocouple analysis with Python, and designed autoclave control-panel wiring schematics.',
     },
     {
       period: 'Spring 2025 – Present',
@@ -332,7 +332,7 @@ const QUALIFICATIONS = {
       logo: 'farmng',
       location: 'Watsonville, CA',
       tags: ['Python', 'NVIDIA Jetson', 'VS Code', 'CAN Bus', 'Mentoring', 'Team Collaboration', 'Technical Documentation'],
-      desc: 'Supported sales and educational outreach for agricultural robots.',
+      desc: 'Co-developed an Amiga robotics curriculum used across 40 high schools.',
     },
   ],
   education: [
@@ -379,7 +379,8 @@ const QUALIFICATIONS = {
       org: 'X Academy Farm Robotics',
       location: 'Watsonville, CA',
       tags: ['Docker', 'Git', 'VS Code', 'Python', 'CAN Bus', 'Mentoring'],
-      desc: 'Co-teaching high school students an agricultural robotics and automation training program.',
+      desc: 'Teaching high school students Amiga assembly, electrical troubleshooting, and autonomous farm robotics.',
+      evidence: { label: 'Read program coverage', url: 'https://www.santacruzworks.org/news/sccoexacademyfarmng' },
     },
   ],
   competition: [
@@ -396,7 +397,8 @@ const QUALIFICATIONS = {
       role: 'Team Lead',
       org: 'Farm Robotics Challenge',
       location: 'Salinas, CA',
-      desc: 'Led a team building an autonomous agricultural robot for the Farm Robotics Challenge.',
+      desc: 'Led Red Scout to the 2026 Western Growers specialty crops award (Division II).',
+      evidence: { label: 'View award results', url: 'https://ucanr.edu/blog/anr-news-releases/article/frc-winners-2026' },
       tags: ['Team Collaboration', 'Problem Solving', 'Python', 'Mentoring', 'SolidWorks', 'OpenCV', 'ResNet-18', 'CNN', 'Isaac Sim'],
     },
     {
@@ -412,10 +414,18 @@ const QUALIFICATIONS = {
     period: 'Portfolio project',
     role: project.category,
     org: project.title,
+    projectId: project.id,
     tags: project.tags,
     desc: project.description,
   })),
 }
+
+const QUAL_HIGHLIGHTS = [
+  QUALIFICATIONS.projects.find((item) => item.projectId === 3),
+  QUALIFICATIONS.work[0],
+  QUALIFICATIONS.competition[1],
+  QUALIFICATIONS.projects.find((item) => item.projectId === 1),
+].filter(Boolean)
 
 /* Unused — see the commented-out logo imports above to re-enable.
 const Logo = ({ type }) => {
@@ -1056,13 +1066,96 @@ function projectFromHash(hash) {
   return PROJECTS.find((project) => project.detail && projectHash(project) === hash)?.id ?? null
 }
 
+function TypedAvailability() {
+  const text = 'Seeking robotics internships and research opportunities in scaling up data collection.'
+  const ref = useRef(null)
+  const [length, setLength] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches ? text.length : 0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    let timer
+    const observer = new IntersectionObserver(([entry]) => {
+      window.clearInterval(timer)
+      if (!entry.isIntersecting) return
+      let count = 0
+      setLength(0)
+      timer = window.setInterval(() => {
+        count += 1
+        setLength(count)
+        if (count >= text.length) window.clearInterval(timer)
+      }, 32)
+    }, { threshold: 0.55 })
+    observer.observe(ref.current.closest('#home'))
+    return () => {
+      observer.disconnect()
+      window.clearInterval(timer)
+    }
+  }, [text])
+  return (
+    <span ref={ref} className="hero-typed" aria-label={text}>
+      <span className="hero-typed-space" aria-hidden="true">{text}</span>
+      <span className="hero-typed-visible" aria-hidden="true">{text.slice(0, length)}<span className={`hero-type-caret${length >= text.length ? ' hero-type-idle' : ''}`}>|</span></span>
+    </span>
+  )
+}
+
+function AwardHighlight() {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.25)
+    }, { threshold: [0, 0.25] })
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+  return (
+    <a ref={ref} className={`about-award${visible ? ' award-visible' : ''}`}
+      href="https://www.farmroboticschallenge.ai/2026results/v/hartnell-college?categoryId=6a0cce3c15857b36c0af1c56"
+      target="_blank" rel="noopener noreferrer">
+      <span className="about-award-content">
+        <svg className="about-award-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z" />
+          <path d="M7 6H4v2a3 3 0 0 0 3 3m10-5h3v2a3 3 0 0 1-3 3" />
+        </svg>
+        <span className="about-award-copy">
+          <strong className="about-award-title">Western Growers Specialty Crops Award</strong>
+          <span className="about-award-meta">Farm Robotics Challenge 2026 · Division II</span>
+        </span>
+        <span className="about-award-link">View award <span aria-hidden="true">↗</span></span>
+      </span>
+    </a>
+  )
+}
+
+function repoInquiryHref(email, projectTitle) {
+  const subject = `${projectTitle} repository access request`
+  const body = `Hi Alonzo,
+
+I'd like to request access to the ${projectTitle} GitHub repository.
+
+My GitHub username is:
+
+Thank you!`
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+}
+
+function experienceFromHash(hash) {
+  const match = /^#qualifications\/(highlights|work|projects|competition|volunteer|education|research)$/.exec(hash)
+  return match?.[1] ?? null
+}
+
 function App() {
-  const [copyStatus, setCopyStatus] = useState('Click to copy email')
+  const [copyStatus, setCopyStatus] = useState('')
+  const copyTimer = useRef(null)
+  useEffect(() => () => window.clearTimeout(copyTimer.current), [])
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText('alonzocabrera48@gmail.com')
+      window.clearTimeout(copyTimer.current)
       setCopyStatus('Copied!')
+      copyTimer.current = window.setTimeout(() => setCopyStatus(''), 2000)
     } catch {
+      window.clearTimeout(copyTimer.current)
       setCopyStatus('Couldn’t copy. Please select and copy the email manually.')
     }
   }
@@ -1070,6 +1163,7 @@ function App() {
   const [active, setActive] = useState(() => {
     const section = window.location.hash.slice(1)
     if (projectFromHash(window.location.hash) !== null) return 'projects'
+    if (experienceFromHash(window.location.hash)) return 'qualifications'
     return SECTIONS.includes(section) ? section : 'home'
   })
   const [theme, setTheme] = useState(
@@ -1092,11 +1186,11 @@ function App() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-  const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState('Highlights')
   const [openProject, setOpenProject] = useState(() => projectFromHash(window.location.hash))
   const [showAllQuals, setShowAllQuals] = useState(false)
-  const pendingScroll = useRef(SECTIONS.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : null)
-  const [qualFilter, setQualFilter] = useState('work')
+  const pendingScroll = useRef(experienceFromHash(window.location.hash) ? 'qualifications' : SECTIONS.includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : null)
+  const [qualFilter, setQualFilter] = useState(() => experienceFromHash(window.location.hash) || 'highlights')
   const [selectedShotIdx, setBigIdx] = useState(0)
   const [bigDir, setBigDir] = useState(1)
   const [sectionIdx, setSectionIdx] = useState(0)
@@ -1104,7 +1198,7 @@ function App() {
   const [activeCardTags, setActiveCardTags] = useState(null)
   const [qualPaused, setQualPaused] = useState(false)
   const [projPaused, setProjPaused] = useState(false)
-  const [projectSelection, setProjectSelection] = useState({ filter: 'All', id: 3 })
+  const [projectSelection, setProjectSelection] = useState({ filter: 'Highlights', id: 3 })
   // Which filter row a click has parked, if any: 'proj' | 'qual' | null. Clicking a
   // tab holds its countdown regardless of the pointer; clicking anywhere off the
   // tabs releases it and the countdown starts over.
@@ -1113,7 +1207,7 @@ function App() {
   // other state, and a running CSS animation won't restart on its own.
   // One restart token per section. They must stay separate: while a skill is
   // selected the Projects bar loops by bumping its token, and a shared one would
-  // remount the Background bar mid-count, so it could never finish and move on.
+  // remount the Experience bar mid-count, so it could never finish and move on.
   const [projRunId, setProjRunId] = useState(0)
   const [projectSpeed, setProjectSpeed] = useState(1)
   const [projectVisited, setProjectVisited] = useState(() => new Set())
@@ -1132,13 +1226,12 @@ function App() {
   }, [openProject, sectionIdx])
 
 
-  // Clicking away from the Skills & Toolkit grid puts everything back to unselected.
-  // The badge is excluded so it can navigate, and the grid itself so picking a skill
-  // isn't undone by its own click.
+  // Keep skill selection while navigating matching filters/cards. Clear it when
+  // clicking outside those matches; skill buttons manage their own selection.
   useEffect(() => {
     const clearSelection = (e) => {
       if (!(e.target instanceof Element)) return
-      if (e.target.closest('.qual-skills, .cross-note')) return
+      if (e.target.closest('.skill-item, .cross-note, .filter-match, .card-hl')) return
       setActiveSkill(null)
       setActiveCardTags(null)
     }
@@ -1146,14 +1239,40 @@ function App() {
     return () => document.removeEventListener('click', clearSelection)
   }, [])
 
-  // Cycle cards within the selected Background filter.
+  // Cycle cards within the selected Experience filter.
   // Store the tab with the index so manual tab changes reset the spotlight.
   const [speed, setSpeed] = useState(1)
   const [lastRunningSpeed, setLastRunningSpeed] = useState(1)
   const playbackSpeed = speed || lastRunningSpeed
   const spotlightPaused = qualPaused || speed === 0
   const [spot, setSpot] = useState({ tab: qualFilter, idx: 0 })
-  const qualCards = QUALIFICATIONS[qualFilter]
+  useEffect(() => {
+    const restoreExperienceFilter = () => {
+      const next = experienceFromHash(window.location.hash)
+      if (!next) return
+      setQualFilter(next)
+      setSpot({ tab: next, idx: 0 })
+      setQualRunId((n) => n + 1)
+      setActiveSkill((current) => {
+        const cards = next === 'highlights' ? QUAL_HIGHLIGHTS : QUALIFICATIONS[next]
+        return current && cards.some((item) => item.tags?.includes(current)) ? current : null
+      })
+      setActiveCardTags(null)
+      setOpenProject(null)
+      setShowAllQuals(false)
+      pendingScroll.current = 'qualifications'
+      requestAnimationFrame(() => {
+        document.getElementById('qualifications')?.scrollIntoView({ behavior: 'instant' })
+      })
+    }
+    window.addEventListener('hashchange', restoreExperienceFilter)
+    window.addEventListener('popstate', restoreExperienceFilter)
+    return () => {
+      window.removeEventListener('hashchange', restoreExperienceFilter)
+      window.removeEventListener('popstate', restoreExperienceFilter)
+    }
+  }, [])
+  const qualCards = qualFilter === 'highlights' ? QUAL_HIGHLIGHTS : QUALIFICATIONS[qualFilter]
   const spotPos =
     spot.tab === qualFilter ? Math.min(spot.idx, qualCards.length - 1) : 0
 
@@ -1186,10 +1305,10 @@ function App() {
   // How many cards are lit right now in each section. Shown as a badge in the other
   // section, so whichever one you're scrolled to tells you what's waiting elsewhere.
   // Whichever of the two sections you're reading, this reports the other one's count
-  // and jumps you there. It sits on the side that section lies on: Background is
+  // and jumps you there. It sits on the side that section lies on: Experience is
   // below Projects, so from Projects the badge drops to the foot of the screen.
   const renderCrossNote = () => {
-    // Disabled for now: Background now includes project cards, so the jump badge
+    // Disabled for now: Experience now includes project cards, so the jump badge
     // is no longer needed to move between sections.
     return null
     /*
@@ -1197,7 +1316,7 @@ function App() {
     if (!activeSkill || (!onProjects && active !== 'qualifications')) return null
     const count = onProjects ? qualHlCount : visibleSkillCount
     const target = onProjects ? 'qualifications' : 'projects'
-    const label = onProjects ? 'Background' : 'Projects'
+    const label = onProjects ? 'Experience' : 'Projects'
     return (
       <button
         type="button"
@@ -1238,6 +1357,7 @@ function App() {
     if (!project?.detail) return
     window.history.replaceState(window.history.state, '', projectHash(project))
     setActive('projects')
+    setShowAllQuals(false)
     setOpenProject(id)
     setSectionIdx(0)
     setBigIdx(0)
@@ -1256,8 +1376,9 @@ function App() {
 
     const rememberSection = (id) => {
       setActive(id)
-      if (window.location.hash !== `#${id}`) {
-        window.history.replaceState(window.history.state, '', `#${id}`)
+      const hash = id === 'qualifications' ? `#qualifications/${qualFilter}` : `#${id}`
+      if (window.location.hash !== hash) {
+        window.history.replaceState(window.history.state, '', hash)
       }
     }
 
@@ -1302,7 +1423,7 @@ function App() {
       window.removeEventListener('scroll', pickActive)
       window.removeEventListener('resize', pickActive)
     }
-  }, [openProject, showAllQuals])
+  }, [openProject, showAllQuals, qualFilter])
 
   const navLink = (id, label) => (
     <li key={id}>
@@ -1344,7 +1465,7 @@ function App() {
         <ul className="nav-links">
           {navLink('about', 'About')}
           {navLink('projects', 'Projects')}
-          {navLink('qualifications', 'Background')}
+          {navLink('qualifications', 'Experience')}
           {navLink('contact', 'Contact')}
         </ul>
         <div className="nav-actions">
@@ -1406,7 +1527,7 @@ function App() {
     )
   }
 
-  const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter)
+  const filtered = filter === 'Highlights' ? PROJECTS : PROJECTS.filter((p) => p.category === filter)
   // With a skill selected, the projects carrying it float to the front of the grid.
   // sort() is stable, so everything keeps its relative order within each group.
   const shownProjects = [...filtered].sort(
@@ -1462,6 +1583,7 @@ function App() {
             }`}
             key={it}
             onClick={() => selectSkill(it)}
+            aria-pressed={activeSkill === it}
           >
             {it}
           </button>
@@ -1476,6 +1598,9 @@ function App() {
   // or 'upcoming' (not reached yet).
   // eslint-disable-next-line no-unused-vars
   const renderQualCard = (item, i, showSkillBtn = false, groupKey = null, spot = null) => {
+    const highlightCategory = groupKey === 'highlights'
+      ? QUAL_GROUPS.find((group) => QUALIFICATIONS[group.key].includes(item))?.label
+      : null
     const drawn = spot === 'current' || spot === 'visited'
     const state = activeSkill
       ? // Skill mode: every tagged card wears the full highlight, like a pinned
@@ -1530,11 +1655,14 @@ function App() {
       role={seekable ? 'button' : undefined}
       tabIndex={seekable ? 0 : undefined}
       aria-label={seekable ? `Play the spotlight from ${item.org}` : undefined}
-      onClick={seekable ? seek : undefined}
+      onClick={(e) => {
+        if (activeSkill && item.tags?.includes(activeSkill)) e.stopPropagation()
+        if (seekable && !e.target.closest('a, button')) seek()
+      }}
       onKeyDown={
         seekable
           ? (e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
                 e.preventDefault()
                 seek()
               }
@@ -1560,6 +1688,7 @@ function App() {
           />
         </>
       )}
+      {highlightCategory && <span className="qual-category">{highlightCategory}</span>}
       <h3 className="qual-org">{item.org}</h3>
       <p className="qual-role">{item.role}</p>
       {/* <p className="qual-period">{item.period}</p> */}
@@ -1580,6 +1709,16 @@ function App() {
         </ul>
       ) : (
         item.desc && <p className="qual-desc">{item.desc}</p>
+      )}
+      {item.projectId != null && (
+        <button type="button" className="qual-evidence-link" onClick={() => openProjectView(item.projectId)}>
+          View project <span aria-hidden="true">↗</span>
+        </button>
+      )}
+      {item.evidence && (
+        <a className="qual-evidence-link" href={item.evidence.url} target="_blank" rel="noopener noreferrer">
+          {item.evidence.label} <span aria-hidden="true">↗</span>
+        </a>
       )}
       {/* {showSkillBtn && item.tags?.length > 0 && (
         <button
@@ -1620,6 +1759,13 @@ function App() {
           </button>
         )}
       </div>
+      <p className="skills-context" aria-live={activeSkill || activeCardTags ? 'polite' : 'off'}>
+        {activeSkill
+          ? `Showing experience connected to ${activeSkill}. Click the skill again to clear.`
+          : litTags?.length
+            ? `Green highlights show skills used in ${activeCardTags?.org || spotCard?.org || 'the selected experience'}. Click a skill to find related work.`
+            : 'Click a skill to highlight related experience. Green highlights follow the card spotlight.'}
+      </p>
       <div className="skills-grid">
         {SKILLS.map(renderSkillCard)}
       </div>
@@ -1636,14 +1782,17 @@ function App() {
             <div className="qual-all-cards">
               <p className="detail-breadcrumb">
                 <button className="detail-crumb-link" onClick={() => closeToSection('qualifications')}>
-                  Background
+                  Experience
                 </button>
                 <span className="detail-crumb-sep"> › </span>
-                <span className="detail-crumb-current">See All</span>
+                <span className="detail-crumb-current">All experience</span>
+                <span className="qual-overview-hint">Hover over a card to view more</span>
               </p>
               <div className="qual-all-cards-scroll">
                 <div className="qual-scroll-fade qual-scroll-fade-top" aria-hidden="true" />
-                {QUAL_GROUPS.map(renderQualGroup)}
+                {QUAL_GROUPS.filter((group) => ['work', 'projects'].includes(group.key)).map(renderQualGroup)}
+                {renderQualGroup(QUAL_GROUPS.find((group) => group.key === 'competition'))}
+                {['volunteer', 'education', 'research'].map((key) => renderQualGroup(QUAL_GROUPS.find((group) => group.key === key)))}
                 <div className="qual-scroll-fade qual-scroll-fade-bottom" aria-hidden="true" />
               </div>
               <button className="qual-goback" onClick={() => closeToSection('qualifications')}>
@@ -1872,6 +2021,9 @@ function App() {
                   {d.summary.map((para, i) => (
                     <p key={i} className="detail-body">{para}</p>
                   ))}
+                  {d.repoInquiry && (
+                    <p className="repo-inquiry">GitHub repo inquiries: <a href={repoInquiryHref(d.repoInquiry, p.title)} target="_blank" rel="noopener noreferrer">{d.repoInquiry}</a></p>
+                  )}
                 </div>
 
                 <div className="detail-block">
@@ -1976,7 +2128,7 @@ function App() {
         <div className="hero-inner">
           <p className="hero-status">
             <span className="hero-pulse" aria-hidden="true" />
-            Seeking robotics internships and research opportunities in scaling up data collection.
+            <TypedAvailability />
           </p>
 
           <h1 className="hero-title">
@@ -1985,25 +2137,22 @@ function App() {
           </h1>
   
           <p className="hero-lede">
-            I’m <strong>Alonzo</strong>, a third-year computer science student at the University of
-            California, San Diego. I love to work on ground-based autonomy, vision-based control,
-            and sim-to-real on real hardware, and aspire to pursue a master’s in robotics.
+            I’m <strong>Alonzo</strong>, a computer science student at UC San Diego building
+            perception and control systems for agricultural robots.
           </p>
   
           <div className="hero-cta">
             <a
-              href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#projects"
               className="hero-btn hero-btn-solid"
             >
-              Read my resume
+              View my projects
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
-            <a href="#contact" className="hero-btn hero-btn-ghost">
-              Get in touch
+            <a href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view" target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn-ghost">
+              Résumé ↗
             </a>
           </div>
   
@@ -2036,27 +2185,15 @@ function App() {
               <p className="about-nickname">Lonzo, for short.</p>
             </div>
             <p className="about-experience">
-              My experience spans between software development and robotics, from building front-end applications to developing ROS 2 interfaces and perception pipelines for real-world robotic systems.
+              My experience spans software development and robotics, from building front-end applications to developing ROS 2 interfaces and perception pipelines for real-world robotic systems. I’ve worked on agricultural robot integration, field data collection, and manufacturing automation, connecting software with the hardware it controls.
             </p>
             <p className="about-latino">
-              I’m a first generation Latino looking to make a contribution into the future of farming.
+              As a first-generation Latino studying computer science at UC San Diego, I want to contribute to the future of farming through robotics. I’m especially interested in robot learning and vision-based control.
             </p>
-            <a
-              className="about-award"
-              href="https://www.farmroboticschallenge.ai/2026results/v/hartnell-college?categoryId=6a0cce3c15857b36c0af1c56"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg className="about-award-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-5 0V4Z" />
-                <path d="M7 6H4v2a3 3 0 0 0 3 3m10-5h3v2a3 3 0 0 1-3 3" />
-              </svg>
-              <span className="about-award-copy">
-                <strong>My first competition award:</strong>{' '}
-                <span>Western Growers Specialty Crops Award · Farm Robotics Challenge 2026</span>
-              </span>
-              <span className="about-award-verify">Verify ↗</span>
-            </a>
+            <p className="about-latino">
+              I also mentor students in MATE underwater robotics and co-teach agricultural robotics at X Academy, helping students build, troubleshoot, and program robots of their own.
+            </p>
+            <AwardHighlight />
           </div>
         </div>
       </section>
@@ -2219,7 +2356,9 @@ function App() {
                   <button type="button" className="project-card-title project-preview-title" onClick={() => selectProjectPreview(project.id)} aria-pressed={project.id === featured.id}>{project.title}</button>
                   <p className="project-card-category">{project.category}</p>
                   <div className="project-card-actions">
-                    {project.detail?.github && project.detail.github !== '#' ? (
+                    {project.detail?.repoInquiry ? (
+                      <a href={repoInquiryHref(project.detail.repoInquiry, project.title)} target="_blank" rel="noopener noreferrer" title={project.detail.repoInquiry} aria-label={`Request ${project.title} repository access by email`}>Request repo access ↗</a>
+                    ) : project.detail?.github && project.detail.github !== '#' ? (
                       <a href={project.detail.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>View GitHub ↗</a>
                     ) : (
                       <button type="button" disabled title="Repository link not yet added">View GitHub ↗</button>
@@ -2234,11 +2373,11 @@ function App() {
         </div>
       </section>
 
-      {/* ── Background ── */}
+      {/* ── Experience ── */}
       <section id="qualifications" className="qualifications">
         <div className="qual-inner">
           <span className="section-index">03</span>
-          <h2 className="qual-title">Background</h2>
+          <h2 className="qual-title">Experience</h2>
 
           <div
             className="projects-filter-row qual-filter-row"
@@ -2247,25 +2386,31 @@ function App() {
           >
             <div className="projects-filter">
               <span className="filter-prefix">Filter by </span>
-              {QUAL_GROUPS.map((g, i) => {
+              {[{ key: 'highlights', label: 'Highlights' }, ...QUAL_GROUPS].map((g, i) => {
                 // Cards in this tab carrying the selected skill — sizes the countdown
                 const hits = activeSkill
                   ? skillMatches.filter((m) => m.group === g.key)
                   : []
                 return (
                 <span key={g.key}>
-                  <button
+                  <a
                     className={`filter-btn${qualFilter === g.key ? ' filter-active' : ''}${
                       activeSkill && skillTabs.includes(g.key) ? ' filter-match' : ''
                     }`}
-                    onClick={() => {
+                    href={`#qualifications/${g.key}`}
+                    onClick={(e) => {
+                      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
+                      e.preventDefault()
+                      if (activeSkill && skillTabs.includes(g.key)) e.stopPropagation()
+                      const hash = `#qualifications/${g.key}`
+                      if (window.location.hash !== hash) window.history.pushState(window.history.state, '', hash)
                       // Any tab click restarts that tab's tour from the first card,
                       // clearing the trail of held outlines behind it.
                       setQualFilter(g.key)
                       setSpot({ tab: g.key, idx: 0 })
                       setQualRunId((n) => n + 1)
                     }}
-                    aria-pressed={qualFilter === g.key}
+                    aria-current={qualFilter === g.key ? 'true' : undefined}
                   >
                     {g.label}
                     {qualFilter === g.key && !activeSkill && (
@@ -2277,7 +2422,7 @@ function App() {
                            is the clock and times only the matching cards. */
                         style={{
                           animationDuration: `${
-                            ((activeSkill ? hits.length : QUALIFICATIONS[g.key].length) *
+                            ((activeSkill ? hits.length : (g.key === 'highlights' ? QUAL_HIGHLIGHTS.length : QUALIFICATIONS[g.key].length)) *
                               CARD_MS) /
                             playbackSpeed
                           }ms`,
@@ -2286,8 +2431,8 @@ function App() {
                         aria-hidden="true"
                       />
                     )}
-                  </button>
-                  {i < QUAL_GROUPS.length - 1 && <span className="filter-sep"> | </span>}
+                  </a>
+                  {i < QUAL_GROUPS.length && <span className="filter-sep"> | </span>}
                 </span>
                 )
               })}
@@ -2317,7 +2462,7 @@ function App() {
                   window.scrollTo(0, 0)
                 }}
               >
-                See All
+                View all experience
               </button>
             </div>
           </div>
@@ -2352,26 +2497,26 @@ function App() {
       <section id="contact" className="contact" aria-labelledby="contact-title">
         <div className="contact-inner">
           <div className="contact-content">
-            <span className="section-index">04</span>
-            <h2 id="contact-title" className="contact-title">
-              Build robots.<br />
-              Explore ideas.<br />
-              <span>Solve hard problems.</span>
-            </h2>
-            <p className="contact-intro">
-              I’m looking for <strong>robotics research internships</strong> and always happy to talk
-              about robot learning and building robots for the future of farming.
-              Email is the quickest way to reach me.
-            </p>
-            <button type="button" className="contact-email" onClick={copyEmail} aria-label="Copy alonzocabrera48@gmail.com to clipboard" aria-describedby="email-copy-status">
-              alonzocabrera48@gmail.com
-            </button>
-            <p id="email-copy-status" className="contact-copy-status" role="status">{copyStatus}</p>
-            <nav className="contact-links" aria-label="Contact and profiles">
-              <a href="https://github.com/AlonCS" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-              <a href="https://www.linkedin.com/in/alonzo-cabrera/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-              <a href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view" target="_blank" rel="noopener noreferrer">View Résumé <span aria-hidden="true">↗</span></a>
-            </nav>
+            <div className="contact-message">
+              <span className="section-index">04 · Contact</span>
+              <h2 id="contact-title" className="contact-title">Let’s build<br /><span>something useful.</span></h2>
+              <p className="contact-intro">Open to robotics research internships and conversations about robot learning and agricultural robotics.</p>
+            </div>
+            <div className="contact-actions">
+              <div className="contact-email-row">
+                <a className="contact-email" href={`https://mail.google.com/mail/?view=cm&fs=1&to=alonzocabrera48%40gmail.com&su=${encodeURIComponent("Let’s connect")}&body=${encodeURIComponent("Hi Alonzo,\n\nI came across your portfolio and would like to connect about…\n\nBest,\n[Your name]")}`} target="_blank" rel="noopener noreferrer">alonzocabrera48@gmail.com</a>
+                <button type="button" className="contact-copy" onClick={copyEmail} aria-label="Copy alonzocabrera48@gmail.com to clipboard" aria-describedby="email-copy-status" title="Copy email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4" /></svg>
+                </button>
+              </div>
+              <p className="contact-email-hint">Click email to open a draft</p>
+              <p id="email-copy-status" className="contact-copy-status" role="status">{copyStatus}</p>
+              <nav className="contact-links" aria-label="Contact and profiles">
+                <a href="https://github.com/AlonCS" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                <a href="https://www.linkedin.com/in/alonzo-cabrera/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                <a href="https://drive.google.com/file/d/1GP7CynAufVtqHkGRvk0K6C8GbQ6czlbs/view" target="_blank" rel="noopener noreferrer">Résumé <span aria-hidden="true">↗</span></a>
+              </nav>
+            </div>
           </div>
           <footer className="contact-footer">
             <p>© {new Date().getFullYear()} Alonzo Cabrera Sanchez</p>
