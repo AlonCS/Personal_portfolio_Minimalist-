@@ -2191,7 +2191,7 @@ function App() {
               As a first-generation Latino studying computer science at UC San Diego, I want to contribute to the future of farming through robotics. I’m especially interested in robot learning and vision-based control.
             </p>
             <p className="about-latino">
-              In my free time, I like sharing what I’ve learned about robotics and would enjoy mentoring through programs like X Academy.
+              In my free time, I like sharing what I’ve learned about robotics and would enjoy mentoring through programs with X Academy and the Santa Cruz County Office of Education (Santa Cruz COE).
             </p>
             <AwardHighlight />
           </div>
