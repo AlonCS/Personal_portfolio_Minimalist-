@@ -3681,5 +3681,3 @@ section {
 .detail-award strong { font-size: 14px; font-weight: 500; color: var(--text-h); }
 .detail-award strong > span { color: var(--award-gold); }
 .detail-award:hover strong { color: var(--award-gold); }
-
-.detail-block-head + .detail-award { margin: 0 0 18px; }

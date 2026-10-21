@@ -2022,13 +2022,7 @@ function App() {
                       </a>
                     )}
                   </div>
-                  {d.award && (
-                    <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
-                      <span className="detail-award-label">Award winner</span>
-                      <strong>{d.award.label} <span aria-hidden="true">↗</span></strong>
-                      <span>{d.award.event}</span>
-                    </a>
-                  )}
+
                   {d.summary.map((para, i) => (
                     <p key={i} className="detail-body">{para}</p>
                   ))}
@@ -2076,6 +2070,13 @@ function App() {
                         aria-hidden={i !== sectionIdx}
                       >
                         <p className="detail-body">{s.text}</p>
+                  {d.award && s.title === 'Solution' && (
+                    <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
+                      <span className="detail-award-label">Award winner</span>
+                      <strong>{d.award.label} <span aria-hidden="true">↗</span></strong>
+                      <span>{d.award.event}</span>
+                    </a>
+                  )}
                         {s.image && (
                           <div className="detail-problem-img">
                             <img src={s.image} alt={`${s.title} illustration`} />
