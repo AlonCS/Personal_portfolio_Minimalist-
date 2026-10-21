@@ -2009,7 +2009,7 @@ function App() {
                   <div className="detail-block-head">
                     <h3 className="detail-h">Summary</h3>
                     {d.repoInquiry && (
-                      <a className="detail-repo-inquiry" href={repoInquiryHref(d.repoInquiry, p.title)} target="_blank" rel="noopener noreferrer" title={d.repoInquiry}>GitHub inquiries <span aria-hidden="true">↗</span></a>
+                      <a className="detail-github" href={repoInquiryHref(d.repoInquiry, p.title)} target="_blank" rel="noopener noreferrer" title={d.repoInquiry}>GitHub inquiries <span aria-hidden="true">→</span></a>
                     )}
                     {d?.github && d.github !== '#' && (
                       <a
