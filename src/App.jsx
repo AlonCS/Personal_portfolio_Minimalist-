@@ -2070,13 +2070,7 @@ function App() {
                         aria-hidden={i !== sectionIdx}
                       >
                         <p className="detail-body">{s.text}</p>
-                  {d.award && s.title === 'Solution' && (
-                    <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
-                      <span className="detail-award-label">Award winner</span>
-                      <strong>{d.award.label} <span aria-hidden="true">↗</span></strong>
-                      <span>{d.award.event}</span>
-                    </a>
-                  )}
+
                         {s.image && (
                           <div className="detail-problem-img">
                             <img src={s.image} alt={`${s.title} illustration`} />
@@ -2086,6 +2080,16 @@ function App() {
                     ))}
                   </div>
                 </div>
+
+                {d.award && (
+                  <div className="detail-block">
+                    <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
+                      <span className="detail-award-label">Award winner</span>
+                      <strong>{d.award.label} <span aria-hidden="true">↗</span></strong>
+                      <span>{d.award.event}</span>
+                    </a>
+                  </div>
+                )}
 
                 {next && next.id !== p.id && (
                   <nav className="detail-project-nav" aria-label="Project navigation">
