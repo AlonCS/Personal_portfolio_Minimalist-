@@ -212,6 +212,7 @@ const PROJECTS = [
     tags: ['Python', 'Vision Language Models', 'NVIDIA Jetson', 'Docker', 'Linux'],
     detail: {
       repoInquiry: 'alonzocabrera48@gmail.com',
+      award: { label: 'Western Growers Specialty Crops Award', event: '2026 Farm Robotics Challenge · Division II', url: 'https://www.farmroboticschallenge.ai/2026results/v/hartnell-college' },
       strategy: ['Real-time', 'Field-tested', 'Automated'],
       purpose: 'Automate crop monitoring',
       techStack: ['Python', 'PyTorch', 'OpenCV', 'ROS 2', 'NVIDIA Jetson', 'Docker'],
@@ -2007,6 +2008,9 @@ function App() {
                 <div className="detail-block">
                   <div className="detail-block-head">
                     <h3 className="detail-h">Summary</h3>
+                    {d.repoInquiry && (
+                      <a className="detail-repo-inquiry" href={repoInquiryHref(d.repoInquiry, p.title)} target="_blank" rel="noopener noreferrer" title={d.repoInquiry}>GitHub inquiries <span aria-hidden="true">↗</span></a>
+                    )}
                     {d?.github && d.github !== '#' && (
                       <a
                         className="detail-github"
@@ -2021,8 +2025,12 @@ function App() {
                   {d.summary.map((para, i) => (
                     <p key={i} className="detail-body">{para}</p>
                   ))}
-                  {d.repoInquiry && (
-                    <p className="repo-inquiry">GitHub repo inquiries: <a href={repoInquiryHref(d.repoInquiry, p.title)} target="_blank" rel="noopener noreferrer">{d.repoInquiry}</a></p>
+                  {d.award && (
+                    <a className="detail-award" href={d.award.url} target="_blank" rel="noopener noreferrer">
+                      <span className="detail-award-label">Award winner</span>
+                      <strong>{d.award.label} <span aria-hidden="true">↗</span></strong>
+                      <span>{d.award.event}</span>
+                    </a>
                   )}
                 </div>
 
