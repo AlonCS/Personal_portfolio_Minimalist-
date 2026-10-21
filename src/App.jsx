@@ -2191,7 +2191,7 @@ function App() {
               As a first-generation Latino studying computer science at UC San Diego, I want to contribute to the future of farming through robotics. I’m especially interested in robot learning and vision-based control.
             </p>
             <p className="about-latino">
-              I also mentor students in MATE underwater robotics and co-teach agricultural robotics at X Academy, helping students build, troubleshoot, and program robots of their own.
+              I’m also interested in mentoring through hands-on robotics programs like X Academy, helping students explore underwater and agricultural robotics.
             </p>
             <AwardHighlight />
           </div>
